@@ -42,7 +42,7 @@ $$A^3 = A^2A = \begin{pmatrix}4&4\\0&4\end{pmatrix}\begin{pmatrix}2&1\\0&2\end{p
 - The identity matrix $I$ is the neutral element for matrix multiplication: $AI=IA=A$.
 - The zero matrix $0$ is the neutral element for matrix addition: $A+0=A$.
 
-The pattern is
+For positive integers $n$, the pattern is
 
 $$A^n = \begin{pmatrix}2^n & n2^{n-1} \\ 0 & 2^n\end{pmatrix}.$$
 For example,
