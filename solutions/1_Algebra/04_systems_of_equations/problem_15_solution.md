@@ -10,48 +10,34 @@ For each of the following systems, perform only as much elimination as necessary
 For each, justify the classification: one solution, infinitely many solutions, or no solution.
 
 ## Theoretical Background and Concepts
-By the Rouché–Capelli theorem, the structure of the augmented matrix $[A \mid b]$ in row echelon form immediately classifies a linear system:
-1. **Exactly one solution:** $\text{rank}(A) = \text{rank}[A \mid b] = n$ (full rank, no zero rows on the left, each column has a pivot).
-2. **Infinitely many solutions:** $\text{rank}(A) = \text{rank}[A \mid b] = r < n$ (consistent, at least one free variable, row of zeros $[0 \; 0 \mid 0]$ appears).
-3. **No solution:** $\text{rank}(A) < \text{rank}[A \mid b]$ (a contradiction row $[0 \; 0 \mid c]$ with $c \neq 0$ appears).
+A system of two linear equations in two unknowns belongs to one of three types:
+1. **Exactly one solution:** The equations are independent and consistent (lines intersect at a single point).
+2. **Infinitely many solutions:** One equation is a multiple of the other (lines are coincident, leaving a free choice).
+3. **No solution:** The equations require the same linear combination of variables to equal two different values (lines are parallel and distinct, producing a contradiction).
 
 ## Detailed Step-by-Step Solution
 1. **System 1:**
-   $$\begin{cases}x+y=2\\x-y=0\end{cases}$$
-   - Augmented matrix:
-     $$\left[\begin{array}{cc|c} 1 & 1 & 2 \\ 1 & -1 & 0 \end{array}\right]$$
-   - Elimination ($R_2 \leftarrow R_2 - R_1$):
-     $$\left[\begin{array}{cc|c} 1 & 1 & 2 \\ 0 & -2 & -2 \end{array}\right]$$
-   - **Structure:**
-     There are two nonzero pivot entries ($1$ in row 1, $-2$ in row 2). Both columns have pivots, and there is no contradiction.
-     $\text{rank}(A) = \text{rank}[A \mid b] = 2 = n$.
-   - **Classification:** **Exactly one solution** (unique solution $(x, y) = (1, 1)$).
+   $$\begin{cases}x + y = 2 \\ x - y = 0\end{cases}$$
+   Adding the two equations:
+   $$(x + y) + (x - y) = 2 + 0 \implies 2x = 2 \implies x = 1.$$
+   Then $y = x = 1$.
+   Addition fixes the pair $(x, y) = (1, 1)$ uniquely.
+   **Classification:** **Exactly one solution**.
 
 2. **System 2:**
-   $$\begin{cases}x+y=2\\2x+2y=4\end{cases}$$
-   - Augmented matrix:
-     $$\left[\begin{array}{cc|c} 1 & 1 & 2 \\ 2 & 2 & 4 \end{array}\right]$$
-   - Elimination ($R_2 \leftarrow R_2 - 2R_1$):
-     $$\left[\begin{array}{cc|c} 1 & 1 & 2 \\ 0 & 0 & 0 \end{array}\right]$$
-   - **Structure:**
-     Row 2 is completely zero ($[0 \; 0 \mid 0]$), representing $0 = 0$ (no contradiction).
-     $\text{rank}(A) = \text{rank}[A \mid b] = 1 < 2$. Variable $y$ is free.
-   - **Classification:** **Infinitely many solutions** (described by $x = 2 - y$).
+   $$\begin{cases}x + y = 2 \\ 2x + 2y = 4\end{cases}$$
+   The second equation is an exact duplication (twice the first equation: $2(x+y)=4$).
+   Elimination gives $0 = 0$, leaving only one independent equation $x + y = 2$ in two unknowns. This leaves a free choice (e.g. $y = t$, $x = 2 - t$).
+   **Classification:** **Infinitely many solutions**.
 
 3. **System 3:**
-   $$\begin{cases}x+y=2\\2x+2y=5\end{cases}$$
-   - Augmented matrix:
-     $$\left[\begin{array}{cc|c} 1 & 1 & 2 \\ 2 & 2 & 5 \end{array}\right]$$
-   - Elimination ($R_2 \leftarrow R_2 - 2R_1$):
-     $$\left[\begin{array}{cc|c} 1 & 1 & 2 \\ 0 & 0 & 1 \end{array}\right]$$
-   - **Structure:**
-     Row 2 has zeros on the left and a nonzero constant on the right ($[0 \; 0 \mid 1]$), which asserts $0 = 1$.
-     $\text{rank}(A) = 1 < 2 = \text{rank}[A \mid b]$.
-   - **Classification:** **No solution** (inconsistent).
+   $$\begin{cases}x + y = 2 \\ 2x + 2y = 5\end{cases}$$
+   Dividing the second equation by $2$ gives $x + y = 2.5$.
+   Comparing with the first equation requires $x + y = 2$ and $x + y = 2.5$.
+   These incompatible values of $x + y$ yield the contradiction $2 = 2.5$.
+   **Classification:** **No solution**.
 
 ## Verification and Consistency Checks
-- Geometric check:
-  - System 1 lines have slopes $-1$ and $+1$ (perpendicular lines intersecting at $(1, 1)$). One solution.
-  - System 2 lines are identical ($2x+2y=4 \iff x+y=2$). Infinitely many solutions.
-  - System 3 lines are parallel and distinct ($x+y=2$ and $x+y=2.5$). No solution.
-The classifications are completely confirmed geometrically and algebraically.
+- System 1 represents perpendicular lines intersecting at $(1, 1)$. Unique solution verified.
+- System 2 represents identical lines. Infinitely many solutions verified.
+- System 3 represents parallel distinct lines that never intersect. No solution verified.
