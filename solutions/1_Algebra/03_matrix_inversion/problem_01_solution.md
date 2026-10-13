@@ -8,43 +8,40 @@ $$A=\begin{pmatrix}2&1\\1&1\end{pmatrix},\qquad B=\begin{pmatrix}1&-1\\-1&2\end{
 check, without using a formula, whether $B=A^{-1}$. Compute $AB$ and $BA$ and relate the result to the definition of the inverse.
 
 ## Theoretical Background and Concepts
-By definition, a square matrix $B$ of size $n\times n$ is the inverse of an $n\times n$ matrix $A$ (denoted $A^{-1}$) if and only if:
+By definition, a square matrix $B$ is the multiplicative inverse of an $n\times n$ matrix $A$ (denoted $B = A^{-1}$) if and only if both products yield the identity matrix:
 
-$$AB = I_n \qquad \text{and} \qquad BA = I_n,$$
+$$AB = I \qquad \text{and} \qquad BA = I,$$
 
-where $I_n$ is the $n\times n$ identity matrix. For square matrices, if either $AB = I$ or $BA = I$ holds, the other equality is automatically satisfied; however, checking both products explicitly verifies two-sided invertibility from first principles.
+where $I = \begin{pmatrix}1&0\\0&1\end{pmatrix}$ is the $2\times2$ identity matrix. The identity matrix acts as the neutral element of matrix multiplication ($AI = IA = A$).
+Matrix multiplication is computed using the row-by-column rule: entry $(i, j)$ of the product is the dot product of row $i$ of the first matrix and column $j$ of the second matrix.
 
 ## Detailed Step-by-Step Solution
-1. **Compute $AB$:**
+1. **Compute $AB$ using the row-by-column rule:**
    $$AB = \begin{pmatrix}2&1\\1&1\end{pmatrix}\begin{pmatrix}1&-1\\-1&2\end{pmatrix}$$
-   Entries of $AB$:
-   - Row 1, Column 1: $(2)(1) + (1)(-1) = 2 - 1 = 1$
-   - Row 1, Column 2: $(2)(-1) + (1)(2) = -2 + 2 = 0$
-   - Row 2, Column 1: $(1)(1) + (1)(-1) = 1 - 1 = 0$
-   - Row 2, Column 2: $(1)(-1) + (1)(2) = -1 + 2 = 1$
+   Computing the individual entries:
+   - Row 1, Column 1: $2(1) + 1(-1) = 2 - 1 = 1$
+   - Row 1, Column 2: $2(-1) + 1(2) = -2 + 2 = 0$
+   - Row 2, Column 1: $1(1) + 1(-1) = 1 - 1 = 0$
+   - Row 2, Column 2: $1(-1) + 1(2) = -1 + 2 = 1$
 
-   Therefore:
+   Assembling the product matrix:
    $$AB = \begin{pmatrix}1&0\\0&1\end{pmatrix} = I.$$
 
-2. **Compute $BA$:**
+2. **Compute $BA$ using the row-by-column rule:**
    $$BA = \begin{pmatrix}1&-1\\-1&2\end{pmatrix}\begin{pmatrix}2&1\\1&1\end{pmatrix}$$
-   Entries of $BA$:
-   - Row 1, Column 1: $(1)(2) + (-1)(1) = 2 - 1 = 1$
-   - Row 1, Column 2: $(1)(1) + (-1)(1) = 1 - 1 = 0$
-   - Row 2, Column 1: $(-1)(2) + (2)(1) = -2 + 2 = 0$
-   - Row 2, Column 2: $(-1)(1) + (2)(1) = -1 + 2 = 1$
+   Computing the individual entries:
+   - Row 1, Column 1: $1(2) + (-1)(1) = 2 - 1 = 1$
+   - Row 1, Column 2: $1(1) + (-1)(1) = 1 - 1 = 0$
+   - Row 2, Column 1: $(-1)(2) + 2(1) = -2 + 2 = 0$
+   - Row 2, Column 2: $(-1)(1) + 2(1) = -1 + 2 = 1$
 
-   Therefore:
+   Assembling the product matrix:
    $$BA = \begin{pmatrix}1&0\\0&1\end{pmatrix} = I.$$
 
-3. **Relate to the definition of the inverse:**
-   Because both products yield the $2\times2$ identity matrix:
-   $$AB = BA = I,$$
-   it follows directly from the fundamental definition that $B$ is the unique multiplicative inverse of $A$, i.e., $B = A^{-1}$ (and likewise $A = B^{-1}$).
+3. **Connect to the definition of the inverse:**
+   Because multiplying $A$ and $B$ in both orders yields the identity matrix $I$:
+   $$AB = I \qquad \text{and} \qquad BA = I,$$
+   matrix $B$ satisfies the fundamental definition of the matrix inverse. Therefore, $B = A^{-1}$.
 
 ## Verification and Consistency Checks
-- Determinant check:
-  $$\det A = (2)(1) - (1)(1) = 1 \neq 0.$$
-  $$\det B = (1)(2) - (-1)(-1) = 2 - 1 = 1.$$
-  Notice that $\det(AB) = \det A \cdot \det B = 1 \cdot 1 = 1 = \det I$.
-- The equality $AB = BA = I$ holds unconditionally, confirming that $B = A^{-1}$.
+Both explicit row-by-column multiplications produce the identity matrix $\begin{pmatrix}1&0\\0&1\end{pmatrix}$. Since the check is satisfied in both directions without assuming commutativity in advance, $B$ is verified to be the inverse of $A$.

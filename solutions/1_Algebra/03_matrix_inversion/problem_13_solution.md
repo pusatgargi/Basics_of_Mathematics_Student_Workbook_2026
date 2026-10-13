@@ -13,41 +13,38 @@ describe nonuniform scaling and shear. For $T=HS$, find $T^{-1}$ in two ways:
 Compare the results. Additionally compute $H^{-1}S^{-1}$ and verify that the incorrect order gives a different matrix. Explain the rule: “when undoing a composition of operations, we undo them from the end.”
 
 ## Theoretical Background and Concepts
-For two invertible transformations represented by matrices $S$ and $H$, the composition $T = HS$ applies $S$ first, then $H$.
-The inverse transformation $(HS)^{-1}$ must undo these operations in the **reverse chronological order**:
-$$(HS)^{-1} = S^{-1}H^{-1}.$$
-If one were to apply the inverses in the original forward order ($H^{-1}S^{-1}$), the operations would not cancel:
-$$(H^{-1}S^{-1})(HS) = H^{-1}(S^{-1}H)S \neq I,$$
-because $S^{-1}$ and $H$ do not commute in general.
+The product $T = HS$ represents scaling by $S$ followed by horizontal shear by $H$.
+- $S^{-1} = \begin{pmatrix}\frac{1}{2}&0\\0&1\end{pmatrix}$ reverses horizontal scaling by halving the $x$-coordinate.
+- $H^{-1} = \begin{pmatrix}1&-1\\0&1\end{pmatrix}$ reverses horizontal shear by shifting $x$ back by $-y$.
+To undo $HS$, the shear $H$ must be undone first by $H^{-1}$, and then the scaling $S$ undone by $S^{-1}$. Thus, $(HS)^{-1} = S^{-1}H^{-1}$.
 
 ## Detailed Step-by-Step Solution
 1. **Method 1: Compute $T$ first, then its inverse:**
-   $$T = HS = \begin{pmatrix}1&1\\0&1\end{pmatrix}\begin{pmatrix}2&0\\0&1\end{pmatrix} = \begin{pmatrix}1(2)+1(0) & 1(0)+1(1) \\ 0(2)+1(0) & 0(0)+1(1)\end{pmatrix} = \begin{pmatrix}2&1\\0&1\end{pmatrix}.$$
-   Now invert $T$:
-   $$\det T = (2)(1) - (1)(0) = 2.$$
+   $$T = HS = \begin{pmatrix}1&1\\0&1\end{pmatrix}\begin{pmatrix}2&0\\0&1\end{pmatrix} = \begin{pmatrix}1(2)+1(0) & 1(0)+1(1)\\0(2)+1(0) & 0(0)+1(1)\end{pmatrix} = \begin{pmatrix}2&1\\0&1\end{pmatrix}.$$
+   Now invert $T$ using the $2\times2$ inverse rule:
+   $$\det T = 2 \cdot 1 - 1 \cdot 0 = 2.$$
    $$T^{-1} = \frac{1}{2}\begin{pmatrix}1 & -1 \\ 0 & 2\end{pmatrix} = \begin{pmatrix}\frac{1}{2} & -\frac{1}{2} \\ 0 & 1\end{pmatrix}.$$
 
 2. **Method 2: Use $(HS)^{-1} = S^{-1}H^{-1}$:**
-   First compute individual inverses:
-   - For $S = \begin{pmatrix}2&0\\0&1\end{pmatrix}$: $\det S = 2$, so $S^{-1} = \begin{pmatrix}\frac{1}{2}&0\\0&1\end{pmatrix}$.
-   - For $H = \begin{pmatrix}1&1\\0&1\end{pmatrix}$: $\det H = 1$, so $H^{-1} = \begin{pmatrix}1&-1\\0&1\end{pmatrix}$.
+   The inverses reversing scaling and shear are:
+   $$S^{-1} = \begin{pmatrix}\frac{1}{2} & 0 \\ 0 & 1\end{pmatrix},\qquad H^{-1} = \begin{pmatrix}1 & -1 \\ 0 & 1\end{pmatrix}.$$
+   Multiplying in reverse order:
+   $$S^{-1}H^{-1} = \begin{pmatrix}\frac{1}{2} & 0 \\ 0 & 1\end{pmatrix}\begin{pmatrix}1 & -1 \\ 0 & 1\end{pmatrix} = \begin{pmatrix}\frac{1}{2} & -\frac{1}{2} \\ 0 & 1\end{pmatrix}.$$
+   Both methods yield the exact same inverse matrix: $T^{-1} = S^{-1}H^{-1}$.
 
-   Now multiply in reverse order:
-   $$S^{-1}H^{-1} = \begin{pmatrix}\frac{1}{2}&0\\0&1\end{pmatrix}\begin{pmatrix}1&-1\\0&1\end{pmatrix} = \begin{pmatrix}\frac{1}{2}(1) & \frac{1}{2}(-1) \\ 0(1)+1(0) & 0(-1)+1(1)\end{pmatrix} = \begin{pmatrix}\frac{1}{2} & -\frac{1}{2} \\ 0 & 1\end{pmatrix}.$$
-   Both methods yield identical results: $T^{-1} = S^{-1}H^{-1}$.
+3. **Compute the incorrect order $H^{-1}S^{-1}$:**
+   $$H^{-1}S^{-1} = \begin{pmatrix}1 & -1 \\ 0 & 1\end{pmatrix}\begin{pmatrix}\frac{1}{2} & 0 \\ 0 & 1\end{pmatrix} = \begin{pmatrix}\frac{1}{2} & -1 \\ 0 & 1\end{pmatrix}.$$
 
-3. **Compute $H^{-1}S^{-1}$ (the incorrect order):**
-   $$H^{-1}S^{-1} = \begin{pmatrix}1&-1\\0&1\end{pmatrix}\begin{pmatrix}\frac{1}{2}&0\\0&1\end{pmatrix} = \begin{pmatrix}1\left(\frac{1}{2}\right) & -1(1) \\ 0 & 1(1)\end{pmatrix} = \begin{pmatrix}\frac{1}{2} & -1 \\ 0 & 1\end{pmatrix}.$$
-   Notice that:
-   $$\begin{pmatrix}\frac{1}{2} & -1 \\ 0 & 1\end{pmatrix} \neq \begin{pmatrix}\frac{1}{2} & -\frac{1}{2} \\ 0 & 1\end{pmatrix} = T^{-1}.$$
-   The entry in row 1, column 2 is $-1$ instead of $-\frac{1}{2}$.
+4. **Comparison of distinguishing top-right entries:**
+   - In $S^{-1}H^{-1}$, the top-right entry is:
+     $$\frac{1}{2}(-1) + 0(1) = -\frac{1}{2}.$$
+   - In $H^{-1}S^{-1}$, the top-right entry is:
+     $$1(0) + (-1)(1) = -1.$$
+   Because $-\frac{1}{2} \neq -1$, $H^{-1}S^{-1} \neq T^{-1}$.
 
-4. **Explanation of the rule:**
-   When an object undergoes transformation $S$ and then $H$, the current state is $y = H(Sx)$. To recover the initial state $x$, the outer operation $H$ must be stripped away first by applying $H^{-1}$ (yielding $Sx$), and only then can $S^{-1}$ be applied to yield $x$. Reversing from the end is mathematically necessary because matrix operations are not commutative.
+5. **Explanation of the rule:**
+   When an object is transformed by $S$ and then $H$, the result is $y = H(Sx)$. To recover $x$, the last applied operation $H$ must be undone first by applying $H^{-1}$ (yielding $Sx$), and then $S^{-1}$ is applied to yield $x$. Reversing from the end is mathematically essential because matrix operations do not commute.
 
 ## Verification and Consistency Checks
-Multiply $T$ by $T^{-1}$:
-$$T T^{-1} = \begin{pmatrix}2&1\\0&1\end{pmatrix}\begin{pmatrix}\frac{1}{2}&-\frac{1}{2}\\0&1\end{pmatrix} = \begin{pmatrix}2(1/2)+0 & 2(-1/2)+1(1) \\ 0 & 0+1(1)\end{pmatrix} = \begin{pmatrix}1&0\\0&1\end{pmatrix} = I.$$
-Multiply $T$ by the incorrect order $H^{-1}S^{-1}$:
-$$T (H^{-1}S^{-1}) = \begin{pmatrix}2&1\\0&1\end{pmatrix}\begin{pmatrix}\frac{1}{2}&-1\\0&1\end{pmatrix} = \begin{pmatrix}1 & -2+1 \\ 0 & 1\end{pmatrix} = \begin{pmatrix}1&-1\\0&1\end{pmatrix} \neq I.$$
-This clearly demonstrates that $H^{-1}S^{-1}$ fails to invert $T$.
+$T(S^{-1}H^{-1}) = \begin{pmatrix}2&1\\0&1\end{pmatrix}\begin{pmatrix}1/2&-1/2\\0&1\end{pmatrix} = \begin{pmatrix}1&0\\0&1\end{pmatrix} = I$.
+Meanwhile, $T(H^{-1}S^{-1}) = \begin{pmatrix}2&1\\0&1\end{pmatrix}\begin{pmatrix}1/2&-1\\0&1\end{pmatrix} = \begin{pmatrix}1&-1\\0&1\end{pmatrix} \neq I$, confirming that the incorrect order fails.
