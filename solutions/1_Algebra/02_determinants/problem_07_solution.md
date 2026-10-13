@@ -8,32 +8,33 @@ $$\det(2A),\qquad \det(A^T),\qquad \det(A^2),\qquad \det(-A).$$
 Justify each answer using the appropriate property.
 
 ## Theoretical Background and Concepts
-For any $n\times n$ square matrix $A$ (here $n=3$) and scalar $c \in \mathbb{R}$:
-1. **Scalar multiplication:** $\det(cA) = c^n \det A$, because factoring a scalar out of an $n\times n$ matrix scales each of the $n$ rows by $c$.
-2. **Transposition:** $\det(A^T) = \det A$, because transposition swaps rows and columns without altering the determinant value.
-3. **Multiplicativity:** $\det(AB) = \det A \cdot \det B$, which implies $\det(A^k) = (\det A)^k$ for any positive integer $k$.
-4. **Negation:** As a special case of scalar scaling with $c = -1$, $\det(-A) = (-1)^n \det A$.
+For any $3\times3$ matrix $A$ and scalars:
+1. **Transpose property:** $A^T$ is the matrix with rows and columns exchanged. Transposition preserves the determinant: $\det(A^T) = \det A$.
+2. **Power property:** $A^2 = AA$. By the multiplicative property of determinants, $\det(A^2) = \det(AA) = \det A \cdot \det A = (\det A)^2$.
+3. **Scalar scaling property:** Multiplying an entire $3\times3$ matrix by a scalar $c$ scales each of its three rows by $c$. Factoring $c$ out of each row contributes three factors of $c$, giving $c^3$:
+   $$\det(cA) = c^3 \det A.$$
+4. **Negation property:** $-A$ corresponds to scaling by $c = -1$, which gives $\det(-A) = (-1)^3 \det A = -\det A$.
 
 ## Detailed Step-by-Step Solution
-Given $n = 3$ and $\det A = -4$:
+Given that $A$ is $3\times3$ and $\det A = -4$:
 
 1. **Compute $\det(2A)$:**
-   Using the scalar multiplication property with $c = 2$ and $n = 3$:
+   Scaling every row of the $3\times3$ matrix by $2$ contributes three factors of $2$ ($2^3$):
    $$\det(2A) = 2^3 \cdot \det A = 8 \cdot (-4) = -32.$$
 
 2. **Compute $\det(A^T)$:**
-   Using the transposition property:
+   Since $A^T$ exchanges rows and columns without changing the determinant:
    $$\det(A^T) = \det A = -4.$$
 
 3. **Compute $\det(A^2)$:**
-   Using the multiplicative property:
-   $$\det(A^2) = (\det A)^2 = (-4)^2 = 16.$$
+   Since $A^2 = AA$:
+   $$\det(A^2) = \det A \cdot \det A = (-4) \cdot (-4) = 16.$$
 
 4. **Compute $\det(-A)$:**
-   Using the scalar multiplication property with $c = -1$ and $n = 3$:
+   Since $-A = (-1)A$ for a $3\times3$ matrix:
    $$\det(-A) = (-1)^3 \cdot \det A = (-1) \cdot (-4) = 4.$$
 
 ## Verification and Consistency Checks
-- $\det(-A) = (-1)^3 \det A = -(\det A) = -(-4) = 4$. If $n$ had been even, the sign would not have changed, but for $n=3$ odd, $\det(-A) = -\det A$.
-- $\det(A^2) = 16 \ge 0$, which is consistent with the determinant of any real squared matrix being non-negative.
-- $\det(2A) = 8 \det A = -32$, consistent with all 3 dimensions scaling by 2 (volume scales by $2^3 = 8$).
+- Notice that $\det(A^2) = 16 > 0$, as expected for the square of any real matrix determinant.
+- For $n=3$ odd, $\det(-A) = -\det A = -(-4) = 4$, consistent with scaling all 3 dimensions by $-1$.
+- Scaling all three dimensions by $2$ scales volume by $2^3 = 8$, so $\det(2A) = 8(-4) = -32$.

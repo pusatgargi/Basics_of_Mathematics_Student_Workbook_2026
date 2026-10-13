@@ -8,7 +8,7 @@ $$A=\begin{pmatrix}1&2&-1\\0&3&4\\2&1&5\end{pmatrix}$$
 compute $\det A$ using Sarrus' rule. Then perform one simple check using a chosen property of the determinant.
 
 ## Theoretical Background and Concepts
-Sarrus' rule is a computational method specific to $3\times3$ matrices. Writing the first two columns to the right of the matrix:
+Sarrus' rule is a method for computing the determinant of a $3\times3$ matrix. By writing the first two columns to the right of the matrix:
 
 $$\begin{matrix}
 a_{11} & a_{12} & a_{13} & a_{11} & a_{12} \\
@@ -16,41 +16,39 @@ a_{21} & a_{22} & a_{23} & a_{21} & a_{22} \\
 a_{31} & a_{32} & a_{33} & a_{31} & a_{32}
 \end{matrix}$$
 
-The determinant is the sum of the products along the three main downward diagonals minus the sum of the products along the three upward diagonals:
+Sarrus selects the three downward diagonal products and adds them, then selects the three upward diagonal products and subtracts them:
 
 $$\det A = (a_{11}a_{22}a_{33} + a_{12}a_{23}a_{31} + a_{13}a_{21}a_{32}) - (a_{13}a_{22}a_{31} + a_{11}a_{23}a_{32} + a_{12}a_{21}a_{33}).$$
 
-Alternatively, Laplace cofactor expansion along any row or column yields the exact same determinant value.
+The standard row-replacement property states that adding a multiple of one row to another row leaves the determinant unchanged ($\det A' = \det A$).
 
 ## Detailed Step-by-Step Solution
-1. **Computation via Sarrus' rule:**
+1. **Computation using Sarrus' rule:**
    - Downward diagonal products:
-     $$(1)(3)(5) = 15$$
-     $$(2)(4)(2) = 16$$
-     $$(-1)(0)(1) = 0$$
-     Sum of downward diagonals $= 15 + 16 + 0 = 31$.
+     $$(1)(3)(5) = 15,$$
+     $$(2)(4)(2) = 16,$$
+     $$(-1)(0)(1) = 0.$$
+     Sum of downward products $= 15 + 16 + 0 = 31$.
 
    - Upward diagonal products:
-     $$(-1)(3)(2) = -6$$
-     $$(1)(4)(1) = 4$$
-     $$(2)(0)(5) = 0$$
-     Sum of upward diagonals $= -6 + 4 + 0 = -2$.
+     $$(-1)(3)(2) = -6,$$
+     $$(1)(4)(1) = 4,$$
+     $$(2)(0)(5) = 0.$$
+     Sum of upward products $= -6 + 4 + 0 = -2$.
 
    - Determinant:
      $$\det A = 31 - (-2) = 31 + 2 = 33.$$
 
-2. **Check using Laplace cofactor expansion along Column 1:**
-   Column 1 is convenient because it contains a zero entry:
-
-   $$\det A = a_{11} C_{11} + a_{21} C_{21} + a_{31} C_{31}$$
-   $$\det A = 1 \cdot \det\begin{pmatrix}3&4\\1&5\end{pmatrix} - 0 \cdot \det\begin{pmatrix}2&-1\\1&5\end{pmatrix} + 2 \cdot \det\begin{pmatrix}2&-1\\3&4\end{pmatrix}.$$
-
-   Computing the $2\times2$ minors:
-   $$\det\begin{pmatrix}3&4\\1&5\end{pmatrix} = (3)(5) - (4)(1) = 15 - 4 = 11.$$
-   $$\det\begin{pmatrix}2&-1\\3&4\end{pmatrix} = (2)(4) - (-1)(3) = 8 + 3 = 11.$$
-
-   Substituting back:
-   $$\det A = 1(11) - 0 + 2(11) = 11 + 22 = 33.$$
+2. **Simple check using the row-replacement property:**
+   Instead of carrying out a second full expansion, we perform one elementary row operation to create a zero in the first column:
+   $$R_3 \leftarrow R_3 - 2R_1.$$
+   By the standard row-replacement property, this operation preserves the determinant.
+   Computing the new row 3:
+   $$R_3 = (2 - 2(1),\; 1 - 2(2),\; 5 - 2(-1)) = (0, -3, 7).$$
+   The resulting matrix is:
+   $$\begin{pmatrix}1&2&-1\\0&3&4\\0&-3&7\end{pmatrix}.$$
+   The first column is now $(1, 0, 0)^T$. Expanding along this first column, only the top entry contributes:
+   $$\det A = 1 \cdot \det\begin{pmatrix}3&4\\-3&7\end{pmatrix} = 1 \cdot [(3)(7) - (4)(-3)] = 21 - (-12) = 33.$$
 
 ## Verification and Consistency Checks
-Both methods (Sarrus' rule and Laplace expansion along the first column) yield the identical result $\det A = 33$. Since the determinant is non-zero, the matrix $A$ is invertible.
+Both the Sarrus diagonal calculation and the single row-replacement property check give $\det A = 33$, verifying the result without requiring two full redundant expansions.
