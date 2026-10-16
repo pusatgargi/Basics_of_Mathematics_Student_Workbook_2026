@@ -29,43 +29,51 @@ Both integrals are evaluated over the symmetric interval $[-2, 2]$ centered at $
 The function $f(x) = x$ is an **odd function** since $f(-x) = -x = -f(x)$.
 
 ```text
-          y = x
-            y
-          2 +           /| (2, 2)
-            |          / |
-          1 +         /  |   Area = +2
-            |        /++ |
-    --------+---+---+----+---> x
-      -2   -1   0   1    2
-      |  --/    |
-      | - /     + -1
-   (-2,-2)      |
-   Area = -2    + -2
+                     y = x
+                       y
+                       |             * (2, 2)
+                   2   +            /|
+                       |           / |
+                   1   +          /  |   Area = +2
+                       |         /   |
+  -----+-------+-------*-------+-----+----> x
+      -2      -1     (0,0)     1     2
+       |  Area        /|
+       |  = -2       / |
+       |            /  |
+  -1   +           /   |
+       |          /    |
+  -2   +         /     |
+       *--------/------+
+    (-2,-2)
 ```
 
-- On $[-2, 0]$, the line $y = x$ lies **below** the $x$-axis, forming a right triangle of base $2$ and height $2$, which contributes a **negative signed area** of $-\frac{1}{2}(2)(2) = -2$.
-- On $[0, 2]$, the line $y = x$ lies **above** the $x$-axis, forming a congruent right triangle of base $2$ and height $2$, which contributes a **positive signed area** of $+\frac{1}{2}(2)(2) = +2$.
+- On $[-2, 0]$, the line $y = x$ lies **below** the $x$-axis, forming a right triangle with base on $[-2, 0]$ (base length $2$) and vertical leg of length $2$, which contributes a **negative signed area** of $-\frac{1}{2}(2)(2) = -2$.
+- On $[0, 2]$, the line $y = x$ lies **above** the $x$-axis, forming a congruent right triangle with base on $[0, 2]$ (base length $2$) and vertical leg of length $2$, which contributes a **positive signed area** of $+\frac{1}{2}(2)(2) = +2$.
 - **Prediction**: By odd symmetry, the two signed areas cancel exactly:
   $$\int_{-2}^{2} x\,dx = -2 + 2 = 0.$$
 
 #### Sketch and Prediction for $\int_{-2}^{2} |x|\,dx$
-The function $g(x) = |x|$ is an **even function** since $g(-x) = |-x| = |x| = g(x)$, and it satisfies $|x| \ge 0$ everywhere.
+The function $g(x) = |x|$ is an **even function** since $g(-x) = |-x| = |x| = g(x)$, and it satisfies $|x| \ge 0$ everywhere. Its graph forms a single symmetric V with its vertex at the intersection of the coordinate axes $(0, 0)$ and endpoints at $(-2, 2)$ and $(2, 2)$:
 
 ```text
-          y = |x|
-            y
-    (-2, 2) +           + (2, 2)
-      |\    |          /|
-      | \   + 1       / |
-      |++\  |        /++|
-      |+++\ |       /+++|
-    --+-----+-------+---+---> x
-     -2    -1   0   1   2
-     Area = +2      Area = +2
+                     y = |x|
+                       y
+     (-2, 2) *         |         * (2, 2)
+             |\        |        /|
+             | \       |       / |
+         1   +  \      |      /  +   1
+             |   \    Area   Area/
+             |    \   =+2    =+2/|
+             |     \   |   /     |
+  -----+-----+------+--*--+------+-----+----> x
+      -2    -1       (0,0)       1     2
+       <--- Base 2 ---> <--- Base 2 --->
+          Area = +2         Area = +2
 ```
 
-- Taking the absolute value reflects the negative portion on $[-2, 0]$ across the $x$-axis so that both triangles lie **above** the $x$-axis.
-- Each right triangle (on $[-2, 0]$ and on $[0, 2]$) has base $2$ and height $2$, so each has positive area $\frac{1}{2}(2)(2) = 2$.
+- Taking the absolute value reflects the negative portion on $[-2, 0]$ across the $x$-axis so that both triangular regions lie **above** the $x$-axis, forming two base-2 right triangles that meet at the origin $(0, 0)$.
+- Each right triangle (on $[-2, 0]$ and on $[0, 2]$) has base $2$ and height $2$, so each has positive geometric area $\frac{1}{2}(2)(2) = 2$.
 - **Prediction**: By even symmetry, the two areas add together:
   $$\int_{-2}^{2} |x|\,dx = 2 + 2 = 4.$$
 

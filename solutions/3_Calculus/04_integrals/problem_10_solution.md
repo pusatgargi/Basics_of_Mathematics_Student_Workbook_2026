@@ -39,14 +39,18 @@ $$2 \le \int_0^2 (x^2 + 1)\,dx \le 10.$$
 
 ```text
       y
-    5 + - - - - - - - - * (2, 5)   <-- Upper bound rectangle: height 5, width 2 (Area = 10)
-      |                /|
-    3 +               / |
-      |             /   |
-    1 *------------/----+          <-- Lower bound rectangle: height 1, width 2 (Area = 2)
-    (0,1)         /+++++|
-    0 +----------+------+---> x
-      0          1      2
+    5 + - - - - - - - - - - - - * (2, 5)   <-- Upper bound rectangle (height 5, width 2, Area = 10)
+      |                       . |
+    4 +                     .   |
+      |                   .     |
+    3 +                 .       |
+      |               .         |          <-- Curve y = x^2 + 1 strictly above y = 1 on (0, 2]
+    2 +             .           |
+      |       . . '             |
+    1 * - - - - - - - - - - - - +          <-- Lower bound rectangle (height 1, width 2, Area = 2)
+    (0,1)                       |
+    0 +-------------------------+---> x
+      0             1           2
 ```
 
 ### 2. Recognizing the Method and Computing the Integral Exactly
@@ -65,14 +69,20 @@ $$2 < \frac{14}{3} \approx 4.67 < 10.$$
 The exact value lies comfortably inside the predicted range $[2, 10]$ (and slightly below the midpoint $6$, which makes geometric sense because $y = x^2 + 1$ is concave upward / convex, bowing below the secant line connecting $(0, 1)$ and $(2, 5)$ whose trapezoidal area is $\frac{1+5}{2}\cdot 2 = 6$).
 
 ### 4. Explaining What Types of Computational Errors This Check Can Detect
-Estimating upper and lower bounds before integrating acts as a powerful sanity check that immediately catches several common student mistakes:
-1. **Sign and Limit-Order Errors**:
-   - Swapping the upper and lower limits ($F(0) - F(2) = -\frac{14}{3}$) produces a negative number, which violates the lower bound $\ge 2$.
-   - Subtracting the two terms in the antiderivative ($\frac{8}{3} - 2 = \frac{2}{3} \approx 0.67$) gives a value smaller than the minimum rectangle area $2$.
-2. **Confusing Differentiation with Integration**:
-   - Differentiating the integrand instead of integrating ($\bigl[2x\bigr]_0^2 = 4$, or forgetting that $\int 1\,dx = x$ rather than $0$) or using $3x^3$ instead of $\frac{x^3}{3}$ ($\bigl[3x^3 + x\bigr]_0^2 = 24 + 2 = 26 > 10$) immediately falls outside reasonable bounds.
-3. **Power-Rule Denominator or Exponent Mistakes**:
-   - Forgetting to divide by the new exponent $3$ in $\int x^2\,dx = \frac{x^3}{3}$ would yield $\bigl[x^3 + x\bigr]_0^2 = 8 + 2 = 10$, which hits the upper bound $10$—impossible since $f(x) < 5$ everywhere on $[0, 2)$.
+Estimating bounds before calculating provides a fundamental qualitative check, but it is important to distinguish what it can and cannot detect:
+
+1. **Errors Ruled Out by the Strict Bound ($2 < I < 10$)**:
+   - **Sign errors / Swapped limits**: Swapping the upper and lower limits ($F(0) - F(2) = -\frac{14}{3}$) gives a negative value, immediately ruled out since the integral must be $> 2$.
+   - **Subtraction instead of addition in the antiderivative**: Calculating $\frac{8}{3} - 2 = \frac{2}{3} \approx 0.67$ falls below the lower bound $2$.
+   - **Missing denominator in the power rule**: Forgetting to divide by $3$ in $\int x^2\,dx$, writing $x^3 + x$, gives $[x^3 + x]_0^2 = 8 + 2 = 10$. This hits the upper bound $10$, which is ruled out because $x^2 + 1 < 5$ everywhere on $[0, 2)$.
+   - **Gross arithmetic / Exponent errors**: An erroneous exponent operation such as $[3x^3 + x]_0^2 = 24 + 2 = 26$ yields a value far above the upper bound $10$.
+
+2. **Limitations of the Bound (Necessary vs. Sufficient)**:
+   - Passing the bound ($2 < I < 10$) is a **necessary condition for correctness, but not a proof of correctness**.
+   - An incorrect calculation may still happen to fall within the wide interval $(2, 10)$:
+     - Erroneously **differentiating** the integrand instead of integrating gives $\bigl[2x\bigr]_0^2 = 4 - 0 = 4$. Because $4 \in (2, 10)$, this bound alone does not detect the differentiation mistake.
+     - **Omitting the integral of the constant term $1$** gives $\int_0^2 x^2\,dx = \bigl[\frac{x^3}{3}\bigr]_0^2 = \frac{8}{3} \approx 2.67$. Because $\frac{8}{3} \in (2, 10)$, this omission also goes undetected by this bounding rectangle alone.
+   - To catch such internal errors, one must combine the bound check with an **independent derivative check** ($F'(x) = f(x)$) or tighter geometric bounds (such as the refined tangent-secant trapezoidal bounds $4 < I < 6$, which successfully catches $\frac{8}{3} < 4$).
 
 ## Verification and Consistency Checks
 

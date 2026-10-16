@@ -24,26 +24,28 @@ and verify the result geometrically.
 ### 1. Sketching the Graph of $f(x)$
 Let us analyze the two pieces of $f(x)$ on $[-1, 3]$:
 1. **First piece ($-1 \le x < 1$)**: $f(x) = x + 1$ is a linear function with slope $1$.
-   - At $x = -1$: $f(-1) = -1 + 1 = 0$.
-   - As $x \to 1^-$: $x + 1 \to 1 + 1 = 2$.
+   - At $x = -1$: $f(-1) = -1 + 1 = 0$, so the line starts on the $x$-axis at $(-1, 0)$.
+   - At $x = 0$: $f(0) = 0 + 1 = 1$, crossing the vertical $y$-axis at $(0, 1)$.
+   - As $x \to 1^-$: $x + 1 \to 1 + 1 = 2$, joining at $(1, 2)$.
 2. **Second piece ($1 \le x \le 3$)**: $f(x) = 2$ is a constant function (a horizontal line at height $y = 2$).
    - At $x = 1$: $f(1) = 2$ (so the two pieces meet continuously at $(1, 2)$).
-   - At $x = 3$: $f(3) = 2$.
+   - The line continues horizontally from $(1, 2)$ to $(3, 2)$ at $x = 3$.
 
 ```text
-          y
-        3 +
-          |
-        2 +             *-------------* (3, 2)
-          |            /| (1, 2)      |
-        1 +           / |             |
-          |         /   |  Rectangle  |
-          |       /Tri- |  Area = 4   |
-          |     / angle |             |
-          |   / Area=2  |             |
-  --------+--*----------+------+------+---> x
-         -1  0          1      2      3
-       (-1,0)
+                     y
+                   3 +
+                     |
+                   2 +           *-----------------------* (3, 2)
+                     |          /| (1, 2)                |
+                   1 +         * |                       |
+                     |       /   |       Rectangle       |
+                     |     /     |       Area = 4        |
+                     |   /       |       width = 2       |
+                     | /Triangle |       height = 2      |
+  -------------------*-----------+-----------+-----------+----> x
+                  (-1,0) 0       1           2           3
+                     <--base 2-->
+                      Area = 2
 ```
 
 ### 2. Deciding Where to Split the Integral
