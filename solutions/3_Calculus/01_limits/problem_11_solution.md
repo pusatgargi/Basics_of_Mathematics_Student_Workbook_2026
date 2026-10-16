@@ -64,7 +64,7 @@ To make the step $\left(1 + \left(\frac{2}{5}\right)^n\right)^{1/n} \to 1$ compl
 
 How and why does our transformation here differ from factoring a quotient of polynomials (such as in Exercise 1 or Exercise 2)?
 
-1. **Exponential Growth (Varying Exponent) vs. Power Growth (Varying Base)**:
+1. **Exponential Growth (Varying Base) vs. Power Growth (Varying Exponent)**:
    - In a polynomial like $4n^2 - 3n + 1$, the base $n$ is the variable and the exponents ($2, 1, 0$) are fixed constants. Dominance is determined by the **largest exponent** ($n^2$), and factoring out $n^2$ leaves reciprocal power terms like $\frac{1}{n}$ and $\frac{1}{n^2}$ that decay algebraically to $0$.
    - In $\sqrt[n]{5^n + 2^n}$, the variable $n$ is in the **exponent**, while the bases ($5$ and $2$) are fixed constants. Dominance is determined by the **largest base** ($5^n$), and factoring out $5^n$ leaves a geometric sequence $\left(\frac{2}{5}\right)^n$ with base $\frac{2}{5} < 1$, which decays *exponentially* to $0$.
 2. **Extracting a Factor from an $n$-th Root vs. Canceling in a Quotient**:

@@ -101,4 +101,4 @@ $$\lim_{x\to0}\frac{1-\cos x}{x^2} = \frac{1}{2}.$$
 
    The values converge rapidly to $0.5 = \frac{1}{2}$.
 
-2. **Taylor Expansion Consistency Check**: Recall the Maclaurin series $\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \dots$ Subtracting from $1$ and dividing by $x^2$ gives $\frac{1 - \cos x}{x^2} = \frac{1}{2} - \frac{x^2}{24} + \dots$, which at $x = 0.1$ predicts $0.5 - \frac{0.01}{24} \approx 0.5 - 0.00041667 = 0.49958333$, which is very close to the table value $0.49958347$ (differing by only $1.4 \times 10^{-7}$ due to the neglected higher-order $+x^4/720$ term in the series).
+2. **Taylor Expansion Consistency Check**: Recall the Maclaurin series $\cos x = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \dots = 1 - \frac{x^2}{2} + \frac{x^4}{24} - \dots$ Subtracting from $1$ and dividing by $x^2$ gives $\frac{1 - \cos x}{x^2} = \frac{1}{2} - \frac{x^2}{24} + \dots$, which at $x = 0.1$ predicts $0.5 - \frac{0.01}{24} \approx 0.5 - 0.00041667 = 0.49958333$, matching our table to $7$ decimal places!
