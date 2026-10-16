@@ -129,11 +129,24 @@ Even though our tables and sketches agree with the analytical limits, **a finite
    A function can appear to converge in a table of decimal points while actually failing to have a limit due to rapid oscillations between the sampled points. For example, consider $g(x) = \sin\left(\frac{\pi}{x - 4}\right)$ as $x \to 4$. If we only evaluate $g(x)$ at $x = 4 \pm 10^{-k}$ ($k = 1, 2, 3, \dots$), then $\frac{\pi}{x - 4} = \pm 10^k \pi$ is always an integer multiple of $\pi$, so $g(4 \pm 10^{-k}) = 0$ at **every single point in the table**, even though $\lim_{x\to 4} g(x)$ does not exist (it oscillates wildly between $-1$ and $+1$ infinitely many times near $x = 4$)!
 3. **Finite Resolution of Sketches**:
    Any physical or computer-generated graph has finite pixel resolution and line thickness. It cannot distinguish between a true limit $0.25$ and $0.25000001$, nor can it resolve infinitely narrow spikes, microscopic jumps, or infinitely dense oscillations inside a sub-pixel neighborhood of $x = 4$.
-4. **Catastrophic Cancellation in Numerical Floating-Point Arithmetic**:
-   Ironically, our two chosen examples ($a_n = \sqrt{n^2+5n} - n$ and $f(x) = \frac{\sqrt{x}-2}{x-4}$) are textbook examples where **numerical evaluation actually fails** if pushed too far! In standard 16-digit floating-point arithmetic:
-   - For $n = 10^{10}$, $n^2 + 5n = 10^{20} + 5 \times 10^{10}$ rounds to $10^{20}$, so a computer calculates $\sqrt{n^2+5n} - n = 10^{10} - 10^{10} = \mathbf{0}$ instead of $2.5$!
-   - For $x = 4 + 10^{-16}$, $\sqrt{x}$ rounds to $2.0000000000000000$, so a computer calculates $\frac{\sqrt{x}-2}{x-4} = \mathbf{0}$ instead of $0.25$!
-   Only an **analytical proof** (using conjugation and limit laws) avoids rounding artifacts and rigorously guarantees the behavior across all infinitely many inputs.
+4. **Floating-Point Artifacts, Input Rounding, and Catastrophic Cancellation**:
+   Our two chosen examples ($a_n = \sqrt{n^2+5n} - n$ and $f(x) = \frac{\sqrt{x}-2}{x-4}$) illustrate how numerical floating-point evaluation can fail and mislead when pushed to extremes. In standard IEEE 754 double precision (`binary64`, offering $\approx 53$ bits or $15\text{--}17$ decimal digits of precision):
+
+   - **For the Sequence $a_n = \sqrt{n^2+5n} - n$**:
+     - At $n = 10^{10}$, $n^2 + 5n = 10^{20} + 5 \times 10^{10}$. The ratio $\frac{5n}{n^2} = 5 \times 10^{-10}$ is well above machine precision ($\varepsilon_{\text{mach}} \approx 1.11 \times 10^{-16}$), so direct floating-point calculation still correctly outputs $2.5$.
+     - However, at $n = 10^{16}$, the ratio $\frac{5n}{n^2} = 5 \times 10^{-16}$ is on the edge of machine precision. Subtractive cancellation degrades the calculation, and direct evaluation computes $\sqrt{10^{32} + 5\times 10^{16}} - 10^{16} = \mathbf{2.0}$ instead of $2.5$.
+     - At $n = 10^{17}$, the ratio $\frac{5n}{n^2} = 5 \times 10^{-17} < \varepsilon_{\text{mach}}$. In floating-point addition, $n^2 + 5n = 10^{34} + 5 \times 10^{17}$ rounds exactly to $10^{34} = n^2$. Consequently, the computer computes:
+       $$\sqrt{n^2+5n} - n = \sqrt{n^2} - n = n - n = \mathbf{0.0}.$$
+       Due to catastrophic cancellation, numerical evaluation reports $0.0$ instead of the true limit $2.5$.
+
+   - **For the Function $f(x) = \frac{\sqrt{x}-2}{x-4}$ Near $x = 4$**:
+     Here it is essential to distinguish between **rounding an input to the excluded point** and **catastrophic cancellation in a valid quotient**:
+     - *Catastrophic cancellation in a valid quotient ($x \neq 4$)*: For $x = 4 + 10^{-15}$, the input is represented as the distinct floating-point number $x = 4 + 2^{-50} \approx 4.000000000000000888$. The denominator is $x - 4 = 2^{-50} \approx 8.88 \times 10^{-16} \neq 0$ (a valid, non-zero denominator in the punctured neighborhood). However, $\sqrt{4 + 2^{-50}}$ rounds in `binary64` to $2.0$ exactly, so the computed numerator is $\sqrt{x} - 2 = 0.0$. Thus, the computer calculates:
+       $$\frac{\sqrt{x}-2}{x-4} = \frac{0.0}{8.88 \times 10^{-16}} = \mathbf{0.0}.$$
+       The computed output is $0.0$ instead of the true limit $0.25$, solely because of cancellation in the numerator.
+     - *Rounding the input to the excluded point ($x = 4$)*: In contrast, if we choose $\delta = 10^{-16}$, the quantity $4 + 10^{-16}$ falls below the spacing between representable floats near $4$ ($2^{-50} \approx 8.88 \times 10^{-16}$) and rounds directly to $4.0$ itself. At this rounded input, both numerator and denominator evaluate to $0.0$, so the machine encounters $\frac{0.0}{0.0}$, which is **undefined** (yielding `NaN` or a division-by-zero error), rather than $0.0$.
+
+   These phenomena demonstrate that finite numerical computations can easily produce false zeros or undefined results. Only an **analytical proof** (e.g., using conjugation to remove the indeterminate form) provides an exact and trustworthy result.
 
 ## Verification and Consistency Checks
 
