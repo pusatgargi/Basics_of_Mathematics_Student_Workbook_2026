@@ -14,9 +14,10 @@ Given $u=(1,1,0)$ and $v=(1,0,1)$:
    $$u \cdot v = \|u\|\,\|v\|\cos\theta \iff \cos\theta = \frac{u \cdot v}{\|u\|\,\|v\|}.$$
 
 2. **Qualitative Angle Classification from the Sign of $u \cdot v$:** Because the lengths $\|u\|$ and $\|v\|$ of non-zero vectors are strictly positive ($\|u\| > 0$ and $\|v\| > 0$), the sign of $\cos\theta$ is identical to the sign of the dot product $u \cdot v$:
-   - If $u \cdot v > 0$, then $\cos\theta > 0$, so $0 \le \theta < \frac{\pi}{2}$ ($0^\circ \le \theta < 90^\circ$): the angle is **acute** (the vectors point generally in a similar half-space).
-   - If $u \cdot v = 0$, then $\cos\theta = 0$, so $\theta = \frac{\pi}{2}$ ($90^\circ$): the angle is a **right angle** (the vectors are perpendicular).
-   - If $u \cdot v < 0$, then $\cos\theta < 0$, so $\frac{\pi}{2} < \theta \le \pi$ ($90^\circ < \theta \le 180^\circ$): the angle is **obtuse** (the vectors point generally in opposite half-spaces).
+   - If $u \cdot v > 0$, then $\cos\theta > 0$, so $0 \le \theta < \frac{\pi}{2}$ ($0^\circ \le \theta < 90^\circ$). This allows co-directional parallel vectors ($\theta = 0^\circ$) as well as an **acute angle** ($0^\circ < \theta < 90^\circ$, or $0 < \theta < \frac{\pi}{2}$).
+   - If $u \cdot v = 0$, then $\cos\theta = 0$, so $\theta = \frac{\pi}{2}$ ($90^\circ$): the angle is a **right angle** (the vectors are perpendicular / orthogonal).
+   - If $u \cdot v < 0$, then $\cos\theta < 0$, so $\frac{\pi}{2} < \theta \le \pi$ ($90^\circ < \theta \le 180^\circ$). This allows opposite anti-parallel vectors ($\theta = 180^\circ$) as well as an **obtuse angle** ($90^\circ < \theta < 180^\circ$, or $\frac{\pi}{2} < \theta < \pi$).
+   - For non-parallel vectors (where neither vector is a scalar multiple of the other, excluding $\theta = 0^\circ$ and $\theta = 180^\circ$), a positive dot product $u \cdot v > 0$ directly implies that the angle is strictly **acute**, while a negative dot product implies an **obtuse angle**.
 
 ## Detailed Step-by-Step Solution
 
@@ -33,7 +34,7 @@ u \cdot v &= (1)(1) + (1)(0) + (0)(1) \\
           &= 1 + 0 + 0 \\
           &= 1.
 \end{aligned}$$
-**Prediction:** Since $u \cdot v = 1 > 0$, we have $\cos\theta > 0$. On the interval $[0^\circ, 180^\circ]$, the cosine function is positive strictly for angles less than $90^\circ$. Therefore, we predict that the angle $\theta$ between $u$ and $v$ is **acute** ($0^\circ < \theta < 90^\circ$, or $0 < \theta < \frac{\pi}{2}$).
+**Prediction:** Since $u \cdot v = 1 > 0$, we have $\cos\theta > 0$, so $0^\circ \le \theta < 90^\circ$. Because $u = (1, 1, 0)$ and $v = (1, 0, 1)$ are not scalar multiples of each other, they are non-parallel ($\theta \neq 0^\circ$). Therefore, the positive dot product validly predicts that the angle $\theta$ between $u$ and $v$ is strictly **acute** ($0^\circ < \theta < 90^\circ$, or $0 < \theta < \frac{\pi}{2}$).
 
 ### Part 2: Compute the Angle
 
