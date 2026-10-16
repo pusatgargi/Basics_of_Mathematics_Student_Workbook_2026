@@ -22,8 +22,13 @@ Given:
 $$A=\begin{pmatrix}2&1\\1&3\end{pmatrix},\qquad b=\begin{pmatrix}7\\8\end{pmatrix}.$$
 
 1. **Method 1: Using $A^{-1}b$:**
-   - State and apply the $2\times2$ inverse rule:
-     $$\det A = 2 \cdot 3 - 1 \cdot 1 = 5.$$
+   - For an invertible $2\times 2$ matrix $M = \begin{pmatrix}a & b \\ c & d\end{pmatrix}$ with $\det M = ad - bc \neq 0$, the inverse formula is:
+     $$M^{-1} = \frac{1}{\det M}\begin{pmatrix}d & -b \\ -c & a\end{pmatrix}.$$
+   - Compute the determinant of $A = \begin{pmatrix}2 & 1 \\ 1 & 3\end{pmatrix}$:
+     $$\det A = (2)(3) - (1)(1) = 6 - 1 = 5 \neq 0.$$
+   - Form the adjugate matrix by exchanging the diagonal entries ($2$ and $3$) and negating the off-diagonal entries ($1$ becomes $-1$ in both positions):
+     $$\operatorname{adj}(A) = \begin{pmatrix}3 & -1 \\ -1 & 2\end{pmatrix}.$$
+   - Dividing by $\det A = 5$ yields:
      $$A^{-1} = \frac{1}{5}\begin{pmatrix}3 & -1 \\ -1 & 2\end{pmatrix}.$$
    - Evaluate $x = A^{-1}b$:
      $$x = \frac{1}{5}\begin{pmatrix}3 & -1 \\ -1 & 2\end{pmatrix}\begin{pmatrix}7\\8\end{pmatrix}.$$
