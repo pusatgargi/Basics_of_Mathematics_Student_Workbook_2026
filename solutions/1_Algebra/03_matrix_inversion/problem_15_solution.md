@@ -56,7 +56,7 @@ $$A=\begin{pmatrix}2&1\\1&3\end{pmatrix},\qquad b=\begin{pmatrix}7\\8\end{pmatri
    Counting the essential method stages:
    - **Method 1 (Matrix Inversion):** 3 stages (compute determinant, assemble adjugate inverse matrix, perform matrix-vector multiplication).
    - **Method 2 (Elimination):** 3 stages (pivot swap, row elimination, back substitution).
-   - **Which method is preferred:** For a single right-hand side vector $b$, Gaussian elimination is generally preferred because it solves directly for $x$ without computing unnecessary matrix entries, and scales as $O(n^3/3)$ operations compared to $O(n^3)$ for matrix inversion on larger systems.
+   - **Which method is preferred:** For a single right-hand side vector $b$, Gaussian elimination is preferred because it solves this one right-hand side directly without forming the entire inverse matrix $A^{-1}$. Forming the full inverse requires extra computational work to determine all entries of $A^{-1}$, whereas solving directly for $x$ via elimination only processes the single column vector $b$.
 
 ## Verification and Consistency Checks
 Both methods produce the identical unique solution $(x_1, x_2) = (13/5, 9/5) = (2.6, 1.8)$. Substituting into both original equations confirms the solution.
