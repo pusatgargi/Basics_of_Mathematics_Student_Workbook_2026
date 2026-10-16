@@ -38,7 +38,8 @@ Because $\det A = 0$ for every value of $a$, the coefficient matrix never has fu
    **Outcome:** **No solution** occurs for all **$a \neq 2$**.
 
 4. **Why exactly one solution cannot occur:**
-   For a $2\times2$ system to have a unique solution, the lines must have different slopes, requiring $\det A \neq 0$. Here, the coefficients of $x$ and $y$ are identical in both equations ($(1, 1)$ and $(a, a)$), meaning the lines are always parallel (or coincident). Because the rank of the coefficient matrix is at most 1, a unique solution can never occur.
+   For a linear system $Ax = b$ of two equations in two unknowns to have a unique solution, the coefficient matrix must have full rank ($\operatorname{rank} A = 2$), which requires $\det A \neq 0$. Here, row 2 is $a$ times row 1: $(a, a) = a(1, 1)$, giving $\det A = 1(a) - 1(a) = 0$ for every $a \in \mathbb{R}$, so $\operatorname{rank} A \le 1$.
+   Geometrically, for $a \neq 0$, both equations have normal vectors parallel to $(1, 1)$, describing lines in $\mathbb{R}^2$ that are parallel (for $a \neq 2$, having no intersection) or coincident (for $a = 2$, intersecting along the entire line). For $a = 0$, the second equation reduces to $0 = 4$, which contains no points in $\mathbb{R}^2$ at all (it does not describe a line). Thus, there is never a single unique point of intersection for any $a \in \mathbb{R}$.
 
 ## Verification and Consistency Checks
 - When $a = 2$: $(x, y) = (0, 2) \implies x+y=2$ and $2(0)+2(2)=4$, satisfying both equations.

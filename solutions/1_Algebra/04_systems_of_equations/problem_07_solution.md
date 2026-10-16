@@ -14,7 +14,7 @@ For case 1, carry out the chosen method completely. For cases 2 and 3, describe 
 Different linear systems call for different optimal methods depending on matrix structure and the number of right-hand sides:
 - Triangular systems need no elimination; direct back substitution finds solutions immediately.
 - Multiple systems with a known inverse benefit from reusing the precomputed matrix: $x_i = A^{-1}b_i$ requires only matrix-vector multiplication.
-- A single system without a precomputed inverse is most efficiently solved by Gaussian elimination (triangular reduction followed by back substitution), avoiding the higher cost of inverting the matrix.
+- A single system without a precomputed inverse is most appropriately approached by Gaussian elimination: row reduction reveals whether the system is consistent, unique (when every variable column has a pivot), or has free variables, while avoiding the unnecessary work of computing a full inverse for a single right-hand side.
 
 ## Detailed Step-by-Step Solution
 1. **Case 1: System with triangular coefficient matrix:**
@@ -33,10 +33,13 @@ Different linear systems call for different optimal methods depending on matrix 
      The precomputed matrix $A^{-1}$ is reused three times. Setting up and running elimination three separate times would be redundant and waste computational effort.
 
 3. **Case 3: One $3\times3$ system, inverse not given, single solution vector needed:**
-   - **Chosen Method:** **Gaussian Elimination with Back Substitution**.
-   - **Plan and Efficiency:**
-     Form the augmented matrix $[A \mid b]$, **reduce it to triangular form, and then back-substitute** to find the unique solution vector.
-     - *Unnecessary computation avoided:* Finding $A^{-1}$ requires reducing $[A \mid I_3]$ (solving 3 separate columns simultaneously), which takes roughly 3 times as much work as solving for a single vector $b$. Since only one solution vector is needed, computing $A^{-1}$ is completely unnecessary.
+   - **Chosen Method:** **Gaussian Elimination (Row Reduction)**.
+   - **Plan and Diagnosis:**
+     Form the augmented matrix $[A \mid b]$ and perform forward row reduction to row-echelon form. Because the problem statement does not assume that $A$ is invertible, elimination directly reveals the structure and solvability of the system:
+     - If a contradiction row $[0\; 0\; 0 \mid d]$ with $d \neq 0$ appears, the system is inconsistent (no solution).
+     - If there are fewer than three pivot columns and no contradiction, the system has free variables (infinitely many solutions).
+     - A unique solution is guaranteed only when all three variable columns have pivots (full rank). In that case, back substitution computes the unique solution vector $x$.
+   - *Unnecessary computation avoided:* Computing the entire inverse matrix $A^{-1}$ (which requires reducing $[A \mid I_3]$) performs substantial unnecessary work across all three columns of $I_3$ to obtain full matrix entries that are never needed, and it would fail altogether if $A$ is not invertible. Elimination solves directly for the single right-hand side vector $b$ while determining solvability.
 
 ## Verification and Consistency Checks
 For Case 1, substitute $(x, y) = (5/2, 2)$:
