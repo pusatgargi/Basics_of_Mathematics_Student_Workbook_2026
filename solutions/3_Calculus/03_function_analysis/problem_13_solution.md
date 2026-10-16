@@ -93,23 +93,27 @@ To draw an accurate qualitative and quantitative graph of $f(x) = \frac{\ln x}{x
 5. **The inflection point at $\left(e^{3/2}, \frac{3}{2e^{3/2}}\right)$**, which marks the transition from concave ($\cap$) to convex ($\cup$) required for the curve to level off along $y = 0$.
 
 ```text
-          y
-          ^
-          |                      Global Max
-    0.37  + . . . . . . . . . . . * (e, 1/e)
-          |                 _ - ' : ' - _     Inflection Point
-    0.33  + . . . . . . . / . . . : . . . * (e^(3/2), 3/(2e^(3/2)))
-          |             /         :       : ' - _
-          |            /          :       :       ' - _ _ _     y = 0 (H.A.)
-  --------+-----------*-----------+-------+-----------------' - _ _ _ _ _ > x
-          0           1         e=2.72  4.48          6           8
-          |          / (1, 0)
-          |         |
-   -0.50  +        /
-          |       |
-   -1.00  +       |
-          |      |
-          |      |  <-- x = 0 (Vertical Asymptote)
+            y
+            ^
+      0.37  +                         * (e, 1/e) [Global Max]
+            |                     _ - ' \
+      0.33  +                    /       * (e^(3/2), 3/(2e^(3/2))) [Inflection Point]
+            |                   /         \
+      0.20  +                  /           ' - . _
+            |                 /                    ' - - . _
+      0.10  +                /                               ' - - - - (y -> 0+)
+  ----------+---------------*-----------+-----------+-----------+----------> x
+            0               1         e=2.72       4.5          8
+            | (x -> 0+)    / (1, 0)
+            |             /
+     -0.50  +            /
+            |           /
+     -1.00  +          /
+            |         /
+     -2.00  +        /
+            |       |
+            |      |
+            |      |  (y -> -inf along x = 0)
 ```
 
 ## Verification and Consistency Checks

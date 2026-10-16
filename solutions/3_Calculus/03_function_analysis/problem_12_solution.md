@@ -38,20 +38,22 @@ Let $g(x) = x^2 - 4 = (x - 2)(x + 2)$.
   - $g(x) < 0$ on $(-2, 2)$.
 
 ```text
-                 Graph of g(x) = x^2 - 4
-                        y
-                        ^
-                      5 +  \                         /
-                        |   \                       /
-                      2 +    \                     /
-                        |     \                   /
-  ----------------------+------*--------+--------*------> x
-             -3        -2      |\       0       / 2      3
-                        |      | \      |      /
-                     -2 +      |  \     |     /
-                        |      |   \    |    /   (Portion below x-axis
-                     -4 +      |    ' - * - '     to be reflected upward)
-                                     (0, -4)
+                     Graph of g(x) = x^2 - 4
+                              y
+                              ^
+                        5 +   \                       /
+                          |    \                     /
+                        2 +     \                   /
+                          |      \                 /
+  ----+-----------*-------+-------+---------------+*----------+----> x
+     -3          -2      -1       0       1        2          3
+               (-2, 0)    |               |     (2, 0)
+                          |   \       /   |
+                       -2 +    \     /    + -2
+                          |     \   /     |
+                       -4 + . . . * . . . + -4  (Portion below x-axis
+                                (0, -4)          to be reflected upward)
+                                Vertex
 ```
 
 ### Step 2: Effect of the Absolute Value and Piecewise Formula for $f(x) = |x^2 - 4|$
@@ -105,20 +107,20 @@ Combining the stationary point $x = 0$ and the two non-differentiable corner poi
 - **Curvature**: Strictly convex ($\cup$) on $(-\infty, -2]$ and $[2, \infty)$; strictly concave ($\cap$) on $[-2, 2]$.
 
 ```text
-                 Graph of f(x) = |x^2 - 4|
-                        y
-                        ^
-                      5 +  \                         /
-                        |   \      Local Max        /
-                      4 +    \      * (0, 4)       /
-                        |     \   / | \           /
-                      2 +      \ /  |  \         /
-                        |       |   |   |       /
-  ----------------------+-------*---+---*------+-------> x
-             -3        -2      -1   0   1      2       3
-                     (-2, 0)                (2, 0)
-                    Sharp Corner          Sharp Corner
-                    (Global Min)          (Global Min)
+                    Graph of f(x) = |x^2 - 4|
+                              y
+                              ^
+                        5 +   \                       /
+                          |    \     Local Max       /
+                        4 +     \     * (0, 4)      /
+                          |      \   /        \    /
+                        2 +       \ /          \  /
+                          |        /            \
+  ----+-----------*-------+-------+---------------+*----------+----> x
+     -3          -2      -1       0       1        2          3
+               (-2, 0)                          (2, 0)
+              V-Corner                         V-Corner
+            (Global Min)                     (Global Min)
 ```
 
 ## Verification and Consistency Checks

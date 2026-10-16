@@ -103,22 +103,23 @@ $$f''(x) = \frac{2x\left(x - \sqrt{3}\right)\left(x + \sqrt{3}\right)}{(x^2 + 1)
 - **Inflection Points**: $\left(-\sqrt{3}, -\frac{\sqrt{3}}{4}\right)$, $(0, 0)$, and $\left(\sqrt{3}, \frac{\sqrt{3}}{4}\right)$
 
 ```text
-                            y
-                            ^
-                            |            Global Max
-                      0.50  + . . . . . . . * (1, 1/2)
-                            |            /  :  \    Inflection Point I3
-                      0.43  +           /   :    * (sqrt(3), sqrt(3)/4)
-                            |          /    :   :  \___
-                            |         /     :   :       \______     y = 0
-  --------------------------+--------*------+---+---------------\---------> x
-         -3       -sqrt(3) -1       0       1  sqrt(3)          3
-          _______/  :   :     \     | (0,0)
-  y = 0          \__:   :      \    |  Inflection Point I2
-                    *   :       \   |
-      (-sqrt(3), -sqrt(3)/4)     * .+. . . -0.50
-      Inflection Point I1    (-1, -1/2)
-                             Global Min
+                              y
+                              ^
+                        0.50  +               * (1, 1/2) [Global Max]
+                              |             / : \
+                        0.43  +            /  :  * (sqrt(3), sqrt(3)/4) [I3]
+                              |           /   :   \
+                              |          /    :    ' - . _
+                              |         /     :            ' - - - - - (y -> 0+)
+  ----+-----------+-----------+--------*------+-----------+-----------+---------> x
+     -3       -sqrt(3)       -1      (0,0)    1        sqrt(3)        3
+      (y -> 0-) - - - - _              /
+                         ' . _        /
+                       [I1] *  \     /
+       (-sqrt(3), -sqrt(3)/4)   \   /
+                                 \ :
+                        -0.50 + . * (-1, -1/2) [Global Min]
+                              |
 ```
 
 ## Verification and Consistency Checks
