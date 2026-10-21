@@ -35,17 +35,20 @@ Let us analyze the two pieces of $f(x)$ on $[-1, 3]$:
                      y
                    3 +
                      |
-                   2 +           *-----------------------* (3, 2)
-                     |          /| (1, 2)                |
-                   1 +         * |                       |
-                     |       /   |       Rectangle       |
-                     |     /     |       Area = 4        |
-                     |   /       |       width = 2       |
-                     | /Triangle |       height = 2      |
-  -------------------*-----------+-----------+-----------+----> x
-                  (-1,0) 0       1           2           3
-                     <--base 2-->
-                      Area = 2
+                   2 +   *-------* (3, 2)
+                     |  /| (1,2) |
+                     | / |       |
+                     |/  |       |
+             (0,1) 1 *   |       |  Rectangle (on [1, 3])
+                    /|   |       |  width = 2, height = 2
+                   / |   |       |  Area = 4
+                  /  |   |       |
+  ---------------*---+---+---+---+----> x
+                -1   0   1   2   3
+              (-1,0) |
+                 |<--2-->|<--2-->|
+                 Triangle Rectangle
+                 Area = 2 Area = 4
 ```
 
 ### 2. Deciding Where to Split the Integral
