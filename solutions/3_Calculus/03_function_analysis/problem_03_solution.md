@@ -76,9 +76,10 @@ We summarize the behavior in the sign chart below:
 | Sign of $f''(x)$ | $-$ | undefined | $+$ |
 | Behavior of $f(x)$ | $\searrow$ from $1^-$ to $-\infty$ (concave) | **Vertical Asymptote** | $\searrow$ from $+\infty$ to $1^+$ (convex) |
 
-**Conclusions on Monotonicity and Extrema**:
+**Conclusions on Monotonicity, Extrema, and Inflection Points**:
 - $f$ is **strictly decreasing** on the interval $(-\infty, 2)$ and **strictly decreasing** on the interval $(2, \infty)$. *(Note: We do not say $f$ is decreasing on the union $(-\infty, 2) \cup (2, \infty)$ as a single set, because for $-1 < 3$ we have $f(-1) = 0 < 4 = f(3)$.)*
-- Since $f'(x) \neq 0$ for all $x \in D_f$, there are **no critical points**, **no local extrema**, and **no inflection points**.
+- Since $f$ is differentiable on $D_f$ and $f'(x) = -\frac{3}{(x - 2)^2} \neq 0$ for all $x \in D_f$, there are **no stationary (critical) points** and **no local extrema**.
+- From the second derivative $f''(x) = \frac{6}{(x - 2)^3}$, we see that $f''(x) \neq 0$ on $D_f$: its sign is strictly constant on each interval of the domain ($f''(x) < 0$ on $(-\infty, 2)$ and $f''(x) > 0$ on $(2, \infty)$). Although $f''(x)$ changes sign across $x = 2$, the point $x = 2 \notin D_f$ is excluded from the domain (it is a vertical asymptote, not a point on the graph), so there are **no inflection points**.
 
 ### Step 5: Structured Summary of Features and Graph Sketch
 
